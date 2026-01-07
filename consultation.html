@@ -43,23 +43,23 @@
 
     <section>
       <div class="container">
-        <form class="form">
+        <form class="form" action="https://formspree.io/f/mrebnapg" method="POST">
           <div class="grid">
             <div>
               <label for="name">Name</label>
-              <input id="name" type="text" placeholder="Full name" />
+              <input id="name" name="name" type="text" placeholder="Full name" />
             </div>
             <div>
               <label for="email">Email</label>
-              <input id="email" type="email" placeholder="you@example.com" />
+              <input id="email" name="email" type="email" placeholder="you@example.com" />
             </div>
             <div>
               <label for="phone">Phone / WhatsApp</label>
-              <input id="phone" type="tel" placeholder="+27" />
+              <input id="phone" name="phone" type="tel" placeholder="+27" />
             </div>
             <div>
               <label for="academic">Academic level</label>
-              <select id="academic">
+              <select id="academic" name="academic_level">
                 <option>Honours</option>
                 <option>Masters</option>
                 <option>PhD</option>
@@ -69,24 +69,24 @@
             </div>
             <div>
               <label for="field">Field of study</label>
-              <input id="field" type="text" placeholder="e.g., Public Health, Cardiology" />
+              <input id="field" name="field_of_study" type="text" placeholder="e.g., Public Health, Cardiology" />
             </div>
             <div>
               <label for="institution">Institution</label>
-              <input id="institution" type="text" placeholder="University or hospital" />
+              <input id="institution" name="institution" type="text" placeholder="University or hospital" />
             </div>
             <div>
               <label for="support">Type of support needed</label>
-              <input id="support" type="text" placeholder="e.g., methodology review, stats coaching" />
+              <input id="support" name="support_needed" type="text" placeholder="e.g., methodology review, stats coaching" />
             </div>
             <div>
               <label for="deadline">Deadline (optional)</label>
-              <input id="deadline" type="date" />
+              <input id="deadline" name="deadline" type="date" />
             </div>
           </div>
           <div>
             <label for="message">Project details</label>
-            <textarea id="message" placeholder="Describe objectives, current progress, and key questions"></textarea>
+            <textarea id="message" name="project_details" placeholder="Describe objectives, current progress, and key questions"></textarea>
           </div>
           <button type="submit" class="btn btn-primary">Submit request</button>
           <p class="small">We acknowledge within one business day. We provide guidance and editorial support; authorship remains yours.</p>
