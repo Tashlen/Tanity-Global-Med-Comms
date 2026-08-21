@@ -6,26 +6,27 @@
   <title>TANITY Global Med Comms | Ethical Research & Medical Communications Support</title>
   <meta name="description" content="TANITY Global Med Comms guides researchers in South Africa and beyond with ethical topic design, methodology support, analysis, and publication-ready communications." />
   <link rel="canonical" href="https://www.tanityglobal.com/" />
-  <meta name="theme-color" content="#f4f1e9" />
+  <meta name="theme-color" content="#08111f" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="TANITY Global Med Comms" />
-  <meta property="og:title" content="TANITY Global Med Comms | Evidence, shaped with clarity." />
+  <meta property="og:title" content="TANITY Global Med Comms | Research, made legible." />
   <meta property="og:description" content="Ethical, specialist guidance from research question to publication-ready communication." />
   <meta property="og:url" content="https://www.tanityglobal.com/" />
-  <meta property="og:image" content="https://www.tanityglobal.com/assets/og-tanity.png" />
+  <meta property="og:image" content="https://www.tanityglobal.com/assets/og-tanity-dark.png" />
   <meta property="og:image:type" content="image/png" />
-  <meta property="og:image:width" content="1729" />
+  <meta property="og:image:width" content="1728" />
   <meta property="og:image:height" content="910" />
-  <meta property="og:image:alt" content="TANITY Global Med Comms — Evidence, shaped with clarity." />
+  <meta property="og:image:alt" content="TANITY Global Med Comms — Research, made legible." />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="TANITY Global Med Comms | Evidence, shaped with clarity." />
+  <meta name="twitter:title" content="TANITY Global Med Comms | Research, made legible." />
   <meta name="twitter:description" content="Ethical, specialist guidance from research question to publication-ready communication." />
-  <meta name="twitter:image" content="https://www.tanityglobal.com/assets/og-tanity.png" />
-  <meta name="twitter:image:alt" content="TANITY Global Med Comms — Evidence, shaped with clarity." />
+  <meta name="twitter:image" content="https://www.tanityglobal.com/assets/og-tanity-dark.png" />
+  <meta name="twitter:image:alt" content="TANITY Global Med Comms — Research, made legible." />
   <link rel="icon" type="image/png" href="assets/tg-logo.PNG" />
-  <link rel="stylesheet" href="css/styles.css?v=20260821" />
+  <link rel="stylesheet" href="css/styles.css?v=20260821-dark" />
+  <link rel="stylesheet" href="css/dark.css?v=20260821-dark" />
 </head>
-<body class="home-page">
+<body class="dark-site home-page dark-home">
   <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="header header--modern" data-header>
     <div class="utility-bar">
@@ -63,9 +64,9 @@
       <div class="hero-glow hero-glow--two" aria-hidden="true"></div>
       <div class="container hero-grid">
         <div class="hero-copy">
-          <div class="eyebrow"><span>Ethical</span><span>Clinical</span><span>Academic</span></div>
-          <h1>Evidence, shaped<br /> with <em>clarity.</em></h1>
-          <p class="lead">From the first research question to publication-ready communication, TANITY helps researchers and clinical teams move forward with confidence — methodically, ethically, and together.</p>
+          <div class="eyebrow"><span>Clinical insight</span><span>Statistical rigor</span><span>Editorial precision</span></div>
+          <h1>Research, made<br /> <em>legible.</em></h1>
+          <p class="lead">Move from an early research question to publication-ready communication through one clear, ethical pathway — shaped around your authorship and your next milestone.</p>
           <div class="hero-actions">
             <a class="btn btn-primary btn-large" href="consultation.html">Plan your next milestone <span aria-hidden="true">↗</span></a>
             <a class="text-link" href="#services">Explore our expertise <span aria-hidden="true">↓</span></a>
@@ -77,24 +78,32 @@
           </div>
         </div>
 
-        <div class="research-canvas" data-tilt aria-label="A four-stage research journey from framing to communication">
-          <div class="canvas-orbit canvas-orbit--one" aria-hidden="true"></div>
-          <div class="canvas-orbit canvas-orbit--two" aria-hidden="true"></div>
-          <div class="canvas-heading">
-            <span>Research pathway</span>
-            <span class="canvas-index">01—04</span>
+        <div class="signal-console" aria-label="An interactive four-stage research pathway from framing to communication">
+          <div class="signal-console__top">
+            <span><i aria-hidden="true"></i> Research pathway</span>
+            <span class="signal-console__mode">Guided / 01—04</span>
           </div>
-          <div class="canvas-core">
-            <span class="canvas-logo"><img src="assets/tg-logo.PNG" alt="" /></span>
-            <div><small>One clear</small><strong>research journey</strong></div>
+          <div class="signal-map">
+            <div class="signal-grid" aria-hidden="true"></div>
+            <div class="signal-beam" aria-hidden="true"></div>
+            <div class="signal-core" id="signal-panel" role="tabpanel" aria-live="polite" aria-labelledby="signal-stage-1">
+              <span class="signal-core__halo" aria-hidden="true"></span>
+              <span class="signal-core__mark"><img src="assets/tg-logo.PNG" alt="" /></span>
+              <small data-signal-kicker>Stage 01 · Frame</small>
+              <strong data-signal-title>Question<br />&amp; scope</strong>
+              <span class="signal-core__copy" data-signal-copy>Define the decision your research needs to support.</span>
+            </div>
+            <div class="signal-stages" role="tablist" aria-label="Research pathway stages">
+              <button class="signal-stage signal-stage--one" id="signal-stage-1" type="button" role="tab" aria-selected="true" aria-controls="signal-panel" tabindex="0" data-kicker="Stage 01 · Frame" data-title="Question|&amp; scope" data-copy="Define the decision your research needs to support."><span>01</span><span><strong>Frame</strong><small>Question &amp; scope</small></span></button>
+              <button class="signal-stage signal-stage--two" id="signal-stage-2" type="button" role="tab" aria-selected="false" aria-controls="signal-panel" tabindex="-1" data-kicker="Stage 02 · Design" data-title="Methods|&amp; protocol" data-copy="Choose a defensible route from question to evidence."><span>02</span><span><strong>Design</strong><small>Methods &amp; protocol</small></span></button>
+              <button class="signal-stage signal-stage--three" id="signal-stage-3" type="button" role="tab" aria-selected="false" aria-controls="signal-panel" tabindex="-1" data-kicker="Stage 03 · Interpret" data-title="Data|&amp; meaning" data-copy="Turn findings into careful, transparent interpretation."><span>03</span><span><strong>Interpret</strong><small>Data &amp; meaning</small></span></button>
+              <button class="signal-stage signal-stage--four" id="signal-stage-4" type="button" role="tab" aria-selected="false" aria-controls="signal-panel" tabindex="-1" data-kicker="Stage 04 · Communicate" data-title="Write|&amp; publish" data-copy="Shape clear communication while authorship stays yours."><span>04</span><span><strong>Communicate</strong><small>Write &amp; publish</small></span></button>
+            </div>
           </div>
-          <div class="journey-grid">
-            <div class="journey-step"><span>01</span><strong>Frame</strong><small>Question &amp; scope</small></div>
-            <div class="journey-step"><span>02</span><strong>Design</strong><small>Methods &amp; protocol</small></div>
-            <div class="journey-step"><span>03</span><strong>Interpret</strong><small>Data &amp; meaning</small></div>
-            <div class="journey-step"><span>04</span><strong>Communicate</strong><small>Write &amp; publish</small></div>
+          <div class="signal-console__footer">
+            <span><i aria-hidden="true"></i> Ethics checkpoint active</span>
+            <span>Authorship stays yours</span>
           </div>
-          <div class="canvas-seal"><span aria-hidden="true">✦</span> Integrity at every stage</div>
         </div>
       </div>
     </section>
@@ -191,7 +200,7 @@
           </div>
           <a class="table-link" href="blog.html">Explore all research notes →</a>
         </div>
-        <div class="blog-grid" style="margin-top:20px;">
+        <div class="blog-grid blog-grid--spaced">
           <article class="blog-card">
             <div class="tag">Research planning</div>
             <h3>Designing research questions that survive peer review</h3>
@@ -220,7 +229,7 @@
           <h2>Ready to plan your next milestone?</h2>
           <p>Book a consult to map your research trajectory with a team that prioritizes ethics and clarity.</p>
         </div>
-        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+        <div class="hero-actions">
           <a class="btn btn-primary" href="consultation.html">Request a Consultation</a>
           <a class="btn btn-ghost" href="contact.html">Speak with a specialist</a>
         </div>
@@ -250,13 +259,13 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=20260821"></script>
+  <script src="js/main.js?v=20260821-dark"></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "TANITY Global Med Comms",
-    "image": "https://www.tanityglobal.com/assets/og-tanity.png",
+    "image": "https://www.tanityglobal.com/assets/og-tanity-dark.png",
     "email": "medcomms@tanityglobal.com",
     "telephone": "+27730985588",
     "address": {

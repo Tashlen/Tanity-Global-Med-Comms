@@ -70,6 +70,19 @@
       if (event.key === 'Escape' && navLinks.classList.contains('open')) {
         closeNavigation({ returnFocus: true });
       }
+      if (event.key === 'Tab' && navLinks.classList.contains('open')) {
+        const focusable = [...navLinks.querySelectorAll('a[href], button:not([disabled])')];
+        if (!focusable.length) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && doc.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && doc.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
     });
 
     window.addEventListener('resize', () => {
@@ -103,15 +116,65 @@
     });
   });
 
+  /* The homepage pathway behaves as a compact, keyboard-operable stage
+     explorer. Its text remains fully available without JavaScript. */
+  const signalTabs = [...doc.querySelectorAll('.signal-stage[role="tab"]')];
+  const signalPanel = doc.getElementById('signal-panel');
+  if (signalTabs.length && signalPanel) {
+    const kicker = signalPanel.querySelector('[data-signal-kicker]');
+    const title = signalPanel.querySelector('[data-signal-title]');
+    const copy = signalPanel.querySelector('[data-signal-copy]');
+
+    const selectSignalStage = (tab, { moveFocus = false } = {}) => {
+      signalTabs.forEach(item => {
+        const selected = item === tab;
+        item.setAttribute('aria-selected', String(selected));
+        item.tabIndex = selected ? 0 : -1;
+      });
+      signalPanel.setAttribute('aria-labelledby', tab.id);
+      kicker.textContent = tab.dataset.kicker;
+      copy.textContent = tab.dataset.copy;
+      const [lineOne, lineTwo] = tab.dataset.title.split('|');
+      title.replaceChildren(doc.createTextNode(lineOne), doc.createElement('br'), doc.createTextNode(lineTwo || ''));
+      if (moveFocus) tab.focus();
+    };
+
+    signalTabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => selectSignalStage(tab));
+      tab.addEventListener('keydown', event => {
+        let nextIndex = null;
+        if (event.key === 'ArrowRight' || event.key === 'ArrowDown') nextIndex = (index + 1) % signalTabs.length;
+        if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') nextIndex = (index - 1 + signalTabs.length) % signalTabs.length;
+        if (event.key === 'Home') nextIndex = 0;
+        if (event.key === 'End') nextIndex = signalTabs.length - 1;
+        if (nextIndex === null) return;
+        event.preventDefault();
+        selectSignalStage(signalTabs[nextIndex], { moveFocus: true });
+      });
+    });
+  }
+
   doc.querySelectorAll('.service-filter').forEach(filter => {
     const grid = filter.parentElement.querySelector('[data-filter-grid]');
     if (!grid) return;
     const cards = [...grid.querySelectorAll('[data-category]')];
+    const status = doc.createElement('span');
+    status.className = 'filter-status';
+    status.setAttribute('role', 'status');
+    status.setAttribute('aria-live', 'polite');
+    filter.append(status);
+
+    const updateFilterStatus = () => {
+      const visible = cards.filter(card => !card.hidden).length;
+      status.textContent = `${visible} ${visible === 1 ? 'service' : 'services'}`;
+    };
+    updateFilterStatus();
 
     filter.addEventListener('click', event => {
       const button = event.target.closest('[data-filter]');
       if (!button) return;
       const category = button.dataset.filter;
+      grid.classList.toggle('is-filtered', category !== 'all');
 
       filter.querySelectorAll('[data-filter]').forEach(item => {
         const selected = item === button;
@@ -123,8 +186,56 @@
         const visible = category === 'all' || card.dataset.category === category;
         card.hidden = !visible;
       });
+      updateFilterStatus();
     });
   });
+
+  /* Service-detail pages gain a generated sticky navigator without changing
+     their canonical content, structured data, or form contracts. */
+  const serviceMain = doc.querySelector('body.service-detail main');
+  if (serviceMain) {
+    const hero = serviceMain.querySelector(':scope > .hero');
+    const sections = [...serviceMain.querySelectorAll(':scope > section:not(.hero)')];
+    if (hero && sections.length) {
+      const wrapper = doc.createElement('div');
+      wrapper.className = 'section-rail-wrap';
+      const rail = doc.createElement('nav');
+      rail.className = 'container section-rail';
+      rail.setAttribute('aria-label', 'On this page');
+      const label = doc.createElement('span');
+      label.className = 'section-rail__label';
+      label.textContent = 'On this page';
+      rail.append(label);
+
+      const links = sections.map((section, index) => {
+        const heading = section.querySelector('h2, h3');
+        section.id = section.id || `service-section-${index + 1}`;
+        const link = doc.createElement('a');
+        link.href = `#${section.id}`;
+        link.textContent = heading?.textContent || `Section ${index + 1}`;
+        if (index === 0) link.setAttribute('aria-current', 'location');
+        rail.append(link);
+        return link;
+      });
+
+      wrapper.append(rail);
+      hero.insertAdjacentElement('afterend', wrapper);
+
+      if ('IntersectionObserver' in window) {
+        const sectionObserver = new IntersectionObserver(entries => {
+          const visible = entries
+            .filter(entry => entry.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+          if (!visible) return;
+          links.forEach(link => {
+            if (link.hash === `#${visible.target.id}`) link.setAttribute('aria-current', 'location');
+            else link.removeAttribute('aria-current');
+          });
+        }, { rootMargin: '-32% 0px -58%', threshold: [0, .1, .3] });
+        sections.forEach(section => sectionObserver.observe(section));
+      }
+    }
+  }
 
   /* Convert the existing FAQ markup into accessible disclosure controls. */
   doc.querySelectorAll('.faq-item').forEach((item, index) => {
@@ -160,9 +271,24 @@
     const message = form.querySelector('textarea');
     if (message) message.required = true;
 
+    form.querySelectorAll('[required]').forEach(field => {
+      field.setAttribute('aria-required', 'true');
+      if (!field.id) return;
+      const label = form.querySelector(`label[for="${CSS.escape(field.id)}"]`);
+      label?.classList.add('is-required');
+    });
+
     form.addEventListener('submit', () => {
       const submit = form.querySelector('[type="submit"]');
       if (!submit || !form.checkValidity()) return;
+      let status = form.querySelector('.form-status');
+      if (!status) {
+        status = doc.createElement('p');
+        status.className = 'form-status';
+        status.setAttribute('role', 'status');
+        submit.insertAdjacentElement('afterend', status);
+      }
+      status.textContent = 'Submitting your details securely…';
       submit.disabled = true;
       submit.dataset.label = submit.textContent;
       submit.textContent = 'Sending securely…';
