@@ -1,0 +1,288 @@
+/* An open typographic index with a narrow reading measure on detail pages. */
+.expertise-page {
+  --expertise-rule: linear-gradient(90deg, var(--gold) 0 2.5rem, var(--line) 2.5rem);
+  color: var(--ink);
+  background: var(--paper);
+  padding-block-end: clamp(4rem, 8vw, 8rem);
+}
+
+.expertise-page h1,
+.expertise-page h2 {
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  text-wrap: balance;
+}
+
+.expertise-intro {
+  padding-block: clamp(3.25rem, 7.8vw, 7.5rem) clamp(3.1rem, 6vw, 6rem);
+}
+
+.expertise-page h1 {
+  max-width: 20ch;
+  font-size: clamp(2.85rem, 6.5vw, 6.15rem);
+  line-height: .99;
+  letter-spacing: -.045em;
+  overflow-wrap: break-word;
+}
+
+.expertise-lead {
+  max-width: 53ch;
+  margin-top: 1.5rem;
+  color: var(--muted);
+  font-size: clamp(1.05rem, 1.6vw, 1.32rem);
+  line-height: 1.58;
+  text-wrap: pretty;
+}
+
+.expertise-jump,
+.expertise-crumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  font-family: var(--sans);
+}
+
+.expertise-jump {
+  gap: .3rem 1.4rem;
+  margin-top: 1.35rem;
+}
+
+.expertise-crumb {
+  gap: .65rem;
+  margin-bottom: 1.7rem;
+  color: var(--line);
+  font-size: .875rem;
+}
+
+.expertise-jump a,
+.expertise-crumb a,
+.expertise-entries a {
+  display: inline-block;
+  color: var(--teal);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: color-mix(in srgb, var(--teal) 53%, transparent);
+  text-underline-offset: .28em;
+}
+
+.expertise-jump a,
+.expertise-crumb a {
+  padding-block: .4rem;
+  font-size: .91rem;
+  font-weight: 600;
+}
+
+.expertise-jump a:is(:hover, :focus-visible),
+.expertise-crumb a:is(:hover, :focus-visible),
+.expertise-entries a:is(:hover, :focus-visible) {
+  color: var(--gold);
+  text-decoration-color: currentColor;
+}
+
+.expertise-group,
+.expertise-body {
+  display: grid;
+  align-items: start;
+  background-image: var(--expertise-rule);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+}
+
+.expertise-group {
+  grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr);
+  gap: clamp(2rem, 7vw, 7rem);
+  padding-block: clamp(2.4rem, 4.7vw, 4.75rem);
+  scroll-margin-block-start: 6rem;
+}
+
+.expertise-group:last-child {
+  padding-bottom: 0;
+}
+
+.expertise-group h2,
+.expertise-primary h2 {
+  color: var(--gold);
+  font-size: clamp(1.95rem, 3.3vw, 3.15rem);
+  line-height: 1.08;
+  letter-spacing: -.035em;
+}
+
+.expertise-group-intro {
+  max-width: 31ch;
+  margin: .9rem 0 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.expertise-entries {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.expertise-entries li + li {
+  border-top: 1px solid var(--line);
+  padding-top: 1.2rem;
+  margin-top: 1.25rem;
+}
+
+.expertise-entries a {
+  padding-block: .2rem;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 2.15vw, 2.15rem);
+  letter-spacing: -.018em;
+  line-height: 1.18;
+  text-decoration-color: var(--line);
+  text-decoration-skip-ink: auto;
+}
+
+.expertise-entries p {
+  max-width: 50ch;
+  margin: .4rem 0 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.expertise-body {
+  grid-template-columns: minmax(0, 1.42fr) minmax(0, .85fr);
+  gap: clamp(3rem, 8vw, 9rem);
+  padding-top: clamp(2.5rem, 4.7vw, 4.75rem);
+}
+
+.expertise-scope {
+  padding-inline-start: 1.25rem;
+  margin: 1.5rem 0 0;
+}
+
+.expertise-scope li {
+  padding-inline-start: .4rem;
+  line-height: 1.7;
+}
+
+.expertise-scope li + li {
+  margin-top: .65rem;
+}
+
+.expertise-scope li::marker {
+  color: var(--teal);
+}
+
+.expertise-questions {
+  margin-top: clamp(2.8rem, 4.8vw, 4.5rem);
+}
+
+.expertise-questions h2 {
+  margin-bottom: 1.25rem;
+}
+
+.expertise-questions details {
+  border-bottom: 1px solid var(--line);
+}
+
+.expertise-questions summary {
+  padding-block: 1.05rem;
+  color: var(--ink);
+  cursor: pointer;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.expertise-questions summary:is(:hover, :focus-visible),
+.expertise-questions [open] > summary {
+  color: var(--teal);
+}
+
+.expertise-questions summary::marker {
+  color: var(--teal);
+  font-size: .8em;
+}
+
+.expertise-questions p,
+.expertise-brief p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.expertise-questions p {
+  margin: -.15rem 0 1.15rem;
+}
+
+.expertise-brief {
+  max-width: 41ch;
+  border-inline-start: 1px solid var(--line);
+  padding-inline-start: clamp(1.45rem, 2.9vw, 2.85rem);
+}
+
+.expertise-brief h2 {
+  color: var(--teal);
+  font-family: var(--sans);
+  font-size: .94rem;
+  font-weight: 650;
+  line-height: 1.5;
+}
+
+.expertise-brief p {
+  margin: .55rem 0 1.65rem;
+}
+
+@media (min-width: 60rem) {
+  .expertise-directory .expertise-intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr);
+    column-gap: clamp(3rem, 6vw, 6rem);
+    align-content: center;
+  }
+
+  .expertise-directory h1 {
+    grid-row: span 2;
+    align-self: center;
+    max-width: none;
+    font-size: clamp(3.4rem, 5.65vw, 5.55rem);
+    text-wrap: wrap;
+  }
+
+  .expertise-directory .expertise-lead {
+    align-self: end;
+    margin: 0;
+  }
+
+  .expertise-group > div {
+    position: sticky;
+    top: 7rem;
+  }
+}
+
+@media (max-width: 48rem) {
+  .expertise-group,
+  .expertise-body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .expertise-group {
+    gap: 1.6rem;
+    scroll-margin-block-start: 4.5rem;
+  }
+
+  .expertise-body {
+    gap: 2.75rem;
+  }
+
+  .expertise-group-intro,
+  .expertise-brief {
+    max-width: 55ch;
+  }
+
+  .expertise-brief {
+    border-inline-start: 0;
+    border-top: 1px solid var(--line);
+    padding: 2rem 0 0;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .expertise-page summary {
+    transition: color .15s ease-out;
+  }
+}
