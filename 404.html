@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#091321">
+  <title>Page not found | TANITY Global Med Comms</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --paper: #091321;
+      --ink: #f5f0e6;
+      --muted: #b6c4d0;
+      --line: #334457;
+      --teal: #93d7cd;
+      --gold: #eac882;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font: 1rem/1.65 system-ui, sans-serif; }
+    main { width: min(45rem, calc(100% - 3rem)); margin: clamp(2rem, 9vh, 6rem) auto; }
+    .brand { margin: 0; padding-bottom: 1.2rem; border-bottom: 1px solid var(--line); color: var(--ink); font: 1.45rem/1.3 Georgia, serif; }
+    .eyebrow { margin: clamp(2.5rem, 9vh, 6rem) 0 1.3rem; color: var(--gold); font-size: .84rem; font-weight: 650; letter-spacing: .12em; text-transform: uppercase; }
+    h1 { margin: 0; font: 400 clamp(3rem, 8vw, 5.5rem)/1.05 Georgia, serif; letter-spacing: -.045em; }
+    p:not(.brand, .eyebrow) { max-width: 48ch; color: var(--muted); }
+    nav { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem 1.5rem; margin-block: 1.8rem; }
+    a { color: var(--teal); text-underline-offset: .24em; }
+    a:hover { text-decoration-thickness: 2px; }
+    .button { display: inline-block; padding: .67rem 1.15rem; background: var(--gold); color: var(--paper); border-radius: .26rem; font-weight: 650; text-decoration: none; }
+    .button:hover { text-decoration: underline; }
+    a:focus-visible { outline: 2px solid var(--teal); outline-offset: 4px; }
+  </style>
+</head>
+<body>
+  <main id="main-content">
+    <p class="brand">TANITY Global Med Comms</p>
+    <p class="eyebrow">Error 404</p>
+    <h1>Page not found</h1>
+    <p>This link may have changed. You can return to the homepage or find the service you need in our directory.</p>
+    <nav aria-label="Find a page">
+      <a class="button" data-path="index.html" href="https://www.tanityglobal.com/">Return home</a>
+      <a data-path="services.html" href="https://www.tanityglobal.com/services.html">Browse expertise</a>
+    </nav>
+    <noscript><p>Viewing a downloaded copy? <a href="index.html">Open the local homepage</a>.</p></noscript>
+    <p>Need help? <a href="mailto:medcomms@tanityglobal.com">Email TANITY</a></p>
+  </main>
+  <script>
+    // Keep recovery links usable from a missing nested URL and a downloaded copy.
+    const siteRoot = location.protocol === "file:" ? new URL(".", location.href) : location.origin + "/";
+    for (const link of document.querySelectorAll("a[data-path]")) {
+      link.href = new URL(link.dataset.path, siteRoot).href;
+    }
+  </script>
+</body>
+</html>
