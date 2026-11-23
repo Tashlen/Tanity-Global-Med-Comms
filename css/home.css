@@ -1,0 +1,167 @@
+/* The artwork follows the headline across the spread. Its small-screen crop
+   keeps the manuscript and its illuminated edge in the same frame. */
+.home-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #040d19;
+  border-bottom: 1px solid #88785377;
+}
+.hero-art, .hero-shade { position: absolute; inset: 0; z-index: -1; }
+.hero-art img { width: 100%; height: 100%; object-fit: cover; object-position: 56% 47%; }
+.hero-shade {
+  background: linear-gradient(90deg, #07132195, #07132170 27%, transparent 63%),
+              linear-gradient(0deg, #060e1bbd, transparent 16%);
+}
+.home-hero-content {
+  display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
+  min-height: clamp(34rem, 44vw, 45rem);
+  padding-block: clamp(3.45rem, 5.5vw, 6rem);
+}
+.home-hero .eyebrow, .home-approach .eyebrow {
+  display: flex; align-items: center; gap: .85rem; color: #ead8b3; letter-spacing: .15em;
+}
+.home-hero .eyebrow::before, .home-approach .eyebrow::before {
+  content: ""; flex: 0 0 2rem; height: 1px; background: var(--gold);
+}
+.home-hero h1 {
+  margin: clamp(1.75rem, 2.7vw, 2.9rem) 0 1.12rem -.035em;
+  color: #fff9ec;
+  font: 450 clamp(4.8rem, 7.5vw, 8.1rem)/.94 var(--serif);
+  letter-spacing: -.05em;
+}
+.home-hero h1 em {
+  font-size: 1.14em;
+  font-weight: 400;
+  color: var(--gold);
+}
+.hero-intro {
+  max-width: min(41ch, 43vw);
+  color: #d0dce5;
+  font-size: clamp(1.06rem, 1.31vw, 1.26rem);
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+.hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.7rem; margin-top: 1.8rem; }
+.hero-actions .button { padding-inline: 1.55rem; box-shadow: 0 4px 28px #d3a64b12; }
+.hero-actions .text-link { color: #edf3ef; text-decoration-color: #99b7bd; }
+.home-hero :focus-visible { outline-color: #fff2c6; }
+
+.home-services {
+  padding-block: clamp(3.2rem, 5.9vw, 6rem);
+  scroll-margin-top: 1rem;
+  background: radial-gradient(ellipse at 5% 15%, #13263888, transparent 60%), #0b1726;
+}
+.home-service-layout {
+  display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+  align-items: start; gap: clamp(2.5rem, 6.6vw, 7rem);
+}
+.home-services h2, .home-approach h2 {
+  margin: 1.1rem 0;
+  font: 450 clamp(2.85rem, 4.6vw, 4.95rem)/1.02 var(--serif);
+  letter-spacing: -.05em;
+}
+.home-services h2 { max-width: 12ch; text-wrap: balance; }
+.home-services h2 em { color: #bedcd5; font-weight: 400; }
+.home-services .text-link { margin-top: .55rem; color: var(--ink); text-decoration-color: #a38f67; }
+.home-service-list { border-bottom: 1px solid var(--line); }
+.home-services details { border-top: 1px solid var(--line); }
+.home-services details[open] { border-top-color: #a49169; }
+.home-services summary {
+  display: grid; grid-template-columns: minmax(0, 1fr) 2.15rem;
+  align-items: center; gap: .3rem 1rem; padding: 1.22rem 0;
+  list-style: none; cursor: pointer;
+}
+.home-services summary::-webkit-details-marker { display: none; }
+.service-label { font: 450 clamp(1.58rem, 2.3vw, 2.45rem)/1.12 var(--serif); letter-spacing: -.025em; }
+.service-hint { grid-column: 1; color: var(--muted); font-size: .95rem; }
+.disclosure-icon {
+  grid-area: 1/2/3; position: relative; display: inline-grid; place-items: center;
+  width: 2rem; height: 2rem; border: 1px solid #49616b; border-radius: 50%; color: var(--teal);
+}
+.disclosure-icon::before, .disclosure-icon::after {
+  content: ""; position: absolute; width: .78rem; height: 1.5px; background: currentColor;
+}
+.disclosure-icon::after { transform: rotate(90deg); }
+.home-services details[open] .disclosure-icon::after { transform: none; }
+.home-services summary:hover .service-label, .home-services details[open] .service-label { color: var(--gold); }
+.home-services summary:hover .disclosure-icon, .home-services details[open] .disclosure-icon {
+  border-color: #b8a079; color: var(--gold); background: #c7a05a12;
+}
+.home-services ul { margin: -.1rem 2.5rem 1.4rem 0; padding: 0 0 0 1rem; border-left: 1px solid #618a8b; list-style: none; }
+.home-services li + li { margin-top: .2rem; }
+.home-services li a { display: inline-block; padding: .22rem 0; text-decoration-color: #5f8b8e; }
+.home-approach {
+  position: relative; isolation: isolate; overflow: hidden;
+  background: #10212c; border-top: 1px solid #33434d;
+}
+.approach-image {
+  position: absolute; z-index: -1; inset: 0 49% 0 0;
+  -webkit-mask-image: linear-gradient(90deg, #000 65%, transparent);
+  mask-image: linear-gradient(90deg, #000 65%, transparent);
+}
+.approach-image img { width: 100%; height: 100%; object-fit: cover; object-position: 87% 46%; filter: saturate(.65) brightness(.82); }
+.home-approach-layout { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: 3rem; }
+.home-approach-copy { grid-column: 2; padding-block: clamp(3.3rem, 5.5vw, 6rem); }
+.home-approach h2 { margin-block: 1.05rem .7rem; font-size: clamp(2.65rem, 4vw, 4.25rem); }
+.home-approach h2 em { color: var(--gold); font-weight: 400; }
+.home-approach-copy > p:not(.eyebrow) { max-width: 49ch; color: #d0dae0; }
+.home-approach-copy .text-link { margin-top: 1.15rem; }
+@media (min-width: 115rem) {
+  .hero-art { right: max(0px, calc((100% - 126rem) / 2)); left: max(0px, calc((100% - 126rem) / 2)); }
+  .hero-art { mask-image: linear-gradient(90deg, transparent, black 12%, black 93%, transparent); }
+}
+@media (max-width: 55rem) and (min-width: 43.01rem) {
+  .home-hero h1 { font-size: clamp(4.1rem, 8.9vw, 4.9rem); }
+  .hero-shade { background: linear-gradient(90deg, #071120e6, #071120a3 42%, transparent 70%); }
+  .home-service-layout { gap: 2.25rem; }
+  .home-approach-layout { grid-template-columns: .72fr 1fr; gap: 1.5rem; }
+  .approach-image { right: 53%; }
+}
+@media (max-width: 43rem) {
+  .home-hero { background: #050e1b; }
+  .hero-art { inset: 0 0 auto auto; width: min(85%, 28rem); height: 70%; }
+  .hero-art img { object-position: 68% 28%; filter: brightness(.81); }
+  .hero-shade {
+    background: linear-gradient(0deg, #050e1b 24%, #050e1bd6 44%, #050e1b40 71%, transparent 92%),
+                linear-gradient(90deg, #050e1bf7, #050e1bc2 37%, #050e1b1f 83%);
+  }
+  .home-hero-content { min-height: 31.5rem; padding-block: 3.5rem 2.65rem; justify-content: flex-end; }
+  .home-hero .eyebrow { color: #f5dfad; font-size: .75rem; letter-spacing: .105em; }
+  .home-hero .eyebrow::before { flex-basis: 1.4rem; }
+  .home-hero h1 { margin-block: 1.5rem 1.05rem; font-size: clamp(2.78rem, 13.6vw, 4.7rem); }
+  .hero-intro { max-width: 39ch; font-size: 1.04rem; }
+  .hero-actions { margin-top: 1.4rem; gap: .8rem .95rem; }
+  .hero-actions .button { padding-inline: 1.1rem; }
+  .hero-actions .text-link { font-size: .91rem; }
+  .home-service-layout { grid-template-columns: 1fr; gap: 1.8rem; }
+  .home-services h2 { max-width: 15ch; }
+  .home-services .text-link { margin-top: 0; }
+  .home-services summary { padding-block: 1.03rem; }
+  .home-approach-layout { display: block; }
+  .home-approach-copy { padding-block: 2.7rem; }
+  .approach-image {
+    position: relative; z-index: 0; display: block; height: clamp(8rem, 36vw, 12rem);
+    -webkit-mask-image: linear-gradient(180deg, black 65%, transparent);
+    mask-image: linear-gradient(180deg, black 65%, transparent);
+  }
+  .approach-image img { object-position: 50% 49%; }
+  .home-approach-copy { padding-top: 1rem; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .disclosure-icon, .service-label, .disclosure-icon::after { transition: color .2s, background-color .2s, border-color .2s, transform .2s; }
+  .hero-art img { animation: print-emerge 1s ease-out both; }
+  @keyframes print-emerge { from { opacity: .76; } to { opacity: 1; } }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .hero-art img { transform: scale(1.005); transition: transform 1.2s ease-out; }
+  .home-hero:hover .hero-art img { transform: scale(1.024); }
+}
+@media print {
+  .home-hero, .home-services, .home-approach { color: var(--ink); background: white; border: 0; }
+  .hero-art, .hero-shade, .approach-image, .hero-actions { display: none; }
+  .home-hero-content { min-height: auto; padding-block: 1.5rem; }
+  .home-hero h1, .home-hero h1 em, .home-hero .eyebrow, .hero-intro,
+  .home-services h2 em, .home-approach .eyebrow, .home-approach-copy > p:not(.eyebrow) { color: var(--ink); }
+  .home-approach-layout { display: block; }
+}
